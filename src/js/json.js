@@ -1,4 +1,4 @@
-import { capitalizePrint, addHeader } from './functions'
+import { capitalizePrint, addHeader, addFooter } from './functions'
 import Print from './print'
 
 export default {
@@ -37,6 +37,10 @@ export default {
 
     // Build the printable html data
     params.printableElement.innerHTML += jsonToHTML(params)
+
+    if(params.footer) {
+        addFooter(params.printableElement, params)
+    }
 
     // Print the json data
     Print.send(params, printFrame)
@@ -103,7 +107,30 @@ function jsonToHTML (params) {
   }
 
   // Add the table and body closing tags
-  htmlData += '</tbody></table>'
+  htmlData += '</tbody>'
+
+  // Check if the footer should be repeated
+  if (params.repeatTableFooter) {
+    htmlData += '<tfoot>'
+  }
+
+  // Add the table footer row
+  htmlData += '<tr>'
+
+  // Add the table footer columns
+  for (let a = 0; a < properties.length; a++) {
+    htmlData += '<th style="width:' + properties[a].columnSize + ';' + params.gridFooterStyle + '">' + capitalizePrint(properties[a].displayName) + '</th>'
+  }
+
+  // Add the closing tag for the table footer row
+  htmlData += '</tr>'
+
+  // If the table footer is marked as repeated, add the closing tag
+  if (params.repeatTableHeader) {
+    htmlData += '</tfoot>'
+  }
+
+  htmlData += '</table>'
 
   return htmlData
 }

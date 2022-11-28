@@ -11,11 +11,14 @@ declare namespace printJS {
     documentTitle?: string;
     header?: any;
     headerStyle?: string;
+    footer?: any;
+    footerStyle?: string;
     maxWidth?: number;
     targetStyle?: string | string[];
     targetStyles?: string | string[];
     properties?: any;
     gridHeaderStyle?: string;
+    gridFooterStyle?: string;
     gridStyle?: string;
     showModal?: boolean;
     onLoadingStart?: () => void;
@@ -24,6 +27,7 @@ declare namespace printJS {
     frameId?: string;
     ignoreElements?: string | string[];
     repeatTableHeader?: boolean;
+    repeatTableFooter?: boolean;
     css?: string | string[];
     style?: string;
     scanStyles?: boolean;
