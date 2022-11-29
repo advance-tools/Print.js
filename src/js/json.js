@@ -21,10 +21,10 @@ export default {
     // We will format the property objects to keep the JSON api compatible with older releases
     params.properties = params.properties.map(property => {
       return {
-        field: typeof property === 'object' ? property.field : property,
-        displayName: typeof property === 'object' ? property.displayName : property,
+        field: typeof property === 'object' && property !== null && property !== undefined ? property.field : property,
+        displayName: typeof property === 'object' && property !== null && property !== undefined ? property.displayName : property,
         columnSize: typeof property === 'object' && property.columnSize ? property.columnSize + ';' : 100 / params.properties.length + '%;',
-        footerText: typeof property === 'object' ? property.footerText : property,
+        footerText: typeof property === 'object'&& property !== null && property !== undefined ? property.footerText : '',
       }
     })
 
@@ -119,7 +119,9 @@ function jsonToHTML (params) {
 
     // Add the table footer columns
     for (let a = 0; a < properties.length; a++) {
-        htmlData += '<td style="width:' + properties[a].columnSize + ';' + params.gridFooterStyle + '">' + properties[a].footerText + '</td>'
+        let x = '<td style="width:' + properties[a].columnSize + ';' + params.gridFooterStyle + '">' + properties[a].footerText + '</td>'
+        console.log(x)
+        htmlData += x
     }
 
     // Add the closing tag for the table footer row

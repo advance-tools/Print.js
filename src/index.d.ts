@@ -8,7 +8,7 @@ declare namespace printJS {
     columnSize : any,
     displayName : any,
     field  : any,
-    footerText: any,
+    footerText?: any,
   }
 
   interface Configuration {
