@@ -113,21 +113,19 @@ function jsonToHTML (params) {
   // Check if the footer should be repeated
   if (params.repeatTableFooter) {
     htmlData += '<tfoot>'
-  }
+  
+    // Add the table footer row
+    htmlData += '<tr>'
 
-  // Add the table footer row
-  htmlData += '<tr>'
+    // Add the table footer columns
+    for (let a = 0; a < properties.length; a++) {
+        htmlData += '<td style="width:' + properties[a].columnSize + ';' + params.gridFooterStyle + '">' + properties[a].footerText + '</td>'
+    }
 
-  // Add the table footer columns
-  for (let a = 0; a < properties.length; a++) {
-    htmlData += '<td style="width:' + properties[a].columnSize + ';' + params.gridFooterStyle + '">' + properties[a].footerText + '</td>'
-  }
+    // Add the closing tag for the table footer row
+    htmlData += '</tr>'
 
-  // Add the closing tag for the table footer row
-  htmlData += '</tr>'
-
-  // If the table footer is marked as repeated, add the closing tag
-  if (params.repeatTableHeader) {
+    // If the table footer is marked as repeated, add the closing tag
     htmlData += '</tfoot>'
   }
 
