@@ -39,7 +39,7 @@ export default {
       targetStyles: ['border', 'box', 'break', 'text-decoration'],
       ignoreElements: [],
       repeatTableHeader: true,
-      repeatTableFooter: true,
+      repeatTableFooter: false,
       css: null,
       style: null,
       scanStyles: true,

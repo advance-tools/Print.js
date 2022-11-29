@@ -4,6 +4,13 @@ declare function printJS(source: string, type?: printJS.PrintTypes): void;
 declare namespace printJS {
   type PrintTypes = 'pdf' | 'html' | 'image' | 'json' | 'raw-html';
 
+  interface Properties {
+    columnSize : any,
+    displayName : any,
+    field  : any,
+    footerText: any,
+  }
+
   interface Configuration {
     printable: any;
     fallbackPrintable?: string;
@@ -16,7 +23,7 @@ declare namespace printJS {
     maxWidth?: number;
     targetStyle?: string | string[];
     targetStyles?: string | string[];
-    properties?: any;
+    properties?: Properties[];
     gridHeaderStyle?: string;
     gridFooterStyle?: string;
     gridStyle?: string;
