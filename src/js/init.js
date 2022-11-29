@@ -60,6 +60,8 @@ export default {
       throw new Error('printJS expects at least 1 attribute.')
     }
 
+    console.log("printJs")
+
     // Process parameters
     switch (typeof args) {
       case 'string':
@@ -134,6 +136,7 @@ export default {
       printFrame.srcdoc += '</head><body></body></html>'
     }
 
+    console.log(`params : ${params}`)
     // Check printable type
     switch (params.type) {
       case 'pdf':
