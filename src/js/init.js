@@ -165,7 +165,8 @@ export default {
         RawHtml.print(params, printFrame)
         break
       case 'json':
-        Json.print(params, printFrame)
+          console.log(params);
+          Json.print(params, printFrame)
         break
     }
   }

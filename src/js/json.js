@@ -4,6 +4,9 @@ import Print from './print'
 export default {
   print: (params, printFrame) => {
     // Check if we received proper data
+
+    console.log(params.properties)
+
     if (typeof params.printable !== 'object') {
       throw new Error('Invalid javascript data object (JSON).')
     }
@@ -27,6 +30,8 @@ export default {
         footerText: typeof property === 'object'&& property !== null && property !== undefined ? property.footerText : '',
       }
     })
+
+    console.log(params.properties)
 
     // Create a print container element
     params.printableElement = document.createElement('div')
@@ -53,6 +58,7 @@ function jsonToHTML (params) {
   const data = params.printable
   const properties = params.properties
 
+  console.log(`json to html ${properties} footer data ${properties[0].footerText}`)
   // Create a html table
   let htmlData = '<table style="border-collapse: collapse; width: 100%;">'
 
